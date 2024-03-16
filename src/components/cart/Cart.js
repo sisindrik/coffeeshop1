@@ -26,7 +26,7 @@ export default function Cart() {
     setCartItems((prev) => ({ ...prev, [id]: qty }));
   };
 
-  const submitOrder = () => {
+  const proceedToBuy = () => {                         //Proceed to Buy
     order.date = Date().slice(0, 15);
     order.email = user.email;
     order.details = cartItems;
@@ -88,14 +88,14 @@ export default function Cart() {
             </table>
           </div>
           <div className="Cart-div-right">
-            <div className="Cart-order-value">Order Value: ₹{orderValue}</div>
             <div className="Cart-order-value">
-              <button onClick={submitOrder} className="Cart-place-order">
-                Submit Order
-              </button>
+            Subtotal({Object.keys(cartItems).length} {Object.keys(cartItems).length === 1 ? "item" : "items"}): ₹{orderValue}
+            </div>
+            <div className="Cart-order-value">
+              <button onClick={proceedToBuy} className="Cart-place-order">Proceed to Buy</button>
             </div>
           </div>
-          {orders.length}
+          {orders.length} 
         </>
       ) : (
         <div>
